@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   covid19_1:
-    image: zylan/repositoriozylanv2:v1
+    image: zylan/repositoriozylan:main
     build: .
     ports:
       - "40001:8000"
