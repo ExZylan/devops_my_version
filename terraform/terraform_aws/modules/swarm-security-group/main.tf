@@ -163,12 +163,34 @@ resource "aws_security_group_rule" "swarm_sgr_15" {
 
 }
 
+resource "aws_security_group_rule" "swarm_sgr_15_test" {
+  security_group_id = var.security_group_id
+
+  type        = "ingress"
+  from_port   = 0
+  to_port     = 3001
+  protocol    = "tcp"
+  cidr_blocks = ["0.0.0.0/0"]
+
+}
+
 resource "aws_security_group_rule" "swarm_sgr_16" {
   security_group_id = var.security_group_id
 
   type        = "ingress"
   from_port   = 0
   to_port     = 9090
+  protocol    = "tcp"
+  cidr_blocks = ["0.0.0.0/0"]
+
+}
+
+resource "aws_security_group_rule" "swarm_sgr_16_test" {
+  security_group_id = var.security_group_id
+
+  type        = "ingress"
+  from_port   = 0
+  to_port     = 9091
   protocol    = "tcp"
   cidr_blocks = ["0.0.0.0/0"]
 
@@ -185,6 +207,17 @@ resource "aws_security_group_rule" "swarm_sgr_17" {
 
 }
 
+resource "aws_security_group_rule" "swarm_sgr_17_test" {
+  security_group_id = var.security_group_id
+
+  type        = "egress"
+  from_port   = 0
+  to_port     = 9091
+  protocol    = "tcp"
+  cidr_blocks = ["0.0.0.0/0"]
+
+}
+
 resource "aws_security_group_rule" "swarm_sgr_18" {
   security_group_id = var.security_group_id
 
@@ -196,12 +229,34 @@ resource "aws_security_group_rule" "swarm_sgr_18" {
 
 }
 
+resource "aws_security_group_rule" "swarm_sgr_18_test" {
+  security_group_id = var.security_group_id
+
+  type        = "ingress"
+  from_port   = 0
+  to_port     = 9101
+  protocol    = "tcp"
+  cidr_blocks = ["0.0.0.0/0"]
+
+}
+
 resource "aws_security_group_rule" "swarm_sgr_19" {
   security_group_id = var.security_group_id
 
   type        = "egress"
   from_port   = 0
   to_port     = 9100
+  protocol    = "tcp"
+  cidr_blocks = ["0.0.0.0/0"]
+
+}
+
+resource "aws_security_group_rule" "swarm_sgr_19_test" {
+  security_group_id = var.security_group_id
+
+  type        = "egress"
+  from_port   = 0
+  to_port     = 9101
   protocol    = "tcp"
   cidr_blocks = ["0.0.0.0/0"]
 
