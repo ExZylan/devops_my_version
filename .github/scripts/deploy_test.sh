@@ -1,21 +1,17 @@
 #!/bin/sh
 
-# Terraform install
+
+# Use Terraform to collect cluster IPs
 wget -q https://releases.hashicorp.com/terraform/1.0.11/terraform_1.0.11_linux_amd64.zip
 unzip -o terraform_1.0.11_linux_amd64.zip -d ~
-
-# Use Terraform to create the cluster
-cd terraform/terraform_aws
+cd terraform/pipeline
 ~/terraform init
-~/terraform apply -var="cluster_size=$NUMBER_OF_NODES" -auto-approve
+~/terraform apply -auto-approve
 ~/terraform output | grep '"' | awk -F '"' 'BEGIN {i=1; print "[cluster]"} {print "node0" i++ " ansible_host="$2}' > ../../terraform/ansible/hosts.ini
 cd ../..
 
-# Wait until docker is installed in all the nodes
-echo "Waiting 150s for docker install process in the cluster nodes"
-sleep 150
-
 # Ansible configuration
+
 mkdir ~/.ssh
 
 echo $VAULT_PASS > ~/vault_passowrd_file.txt
@@ -26,5 +22,4 @@ ansible-vault decrypt \
 
 rm ~/vault_passowrd_file.txt
 
-# Use Ansible to configure the cluster
-ansible-playbook -u ubuntu -i terraform/ansible/hosts.ini terraform/ansible/swarm/create_swarm.yml
+ansible-playbook -u ubuntu -i terraform/ansible/hosts.ini terraform/ansible/swarm/deploy_app_test.yml
