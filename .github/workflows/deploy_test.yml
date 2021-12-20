@@ -1,4 +1,4 @@
-name: Deploy services to cluster
+name: Deploy services to test cluster
 on:
   workflow_dispatch:
   push:
