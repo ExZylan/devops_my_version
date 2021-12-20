@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   covid19_1:
-    image: zylan/repositoriozylan:test
+    image: zylan/repositoriozylan:pruebas
     ports:
       - "40002:8000"
     deploy:
