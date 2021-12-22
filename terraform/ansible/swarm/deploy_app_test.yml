@@ -25,12 +25,6 @@
         src: ../../../docker-compose-swarm-test.yaml
         dest: ./docker-compose-swarm-test.yaml
       run_once: true
-    - name: copying prometheus config
-      become: true
-      copy:
-        src: ../../../docker/prometheus/prometheus-test.yml
-        dest: ./prometheus-test.yml
-      run_once: true
     - name: deploy covid19-test app
       shell: docker stack deploy --compose-file docker-compose-swarm-test.yaml covid19-test
       run_once: true
