@@ -2,6 +2,7 @@ version: '3.9'
 
 services:
   covid19_1_test:
+
     image: zylan/repositoriozylan:pruebas
     ports:
       - "40002:8000"
@@ -9,3 +10,4 @@ services:
       replicas: 3
       update_config:
         delay: 10s
+
